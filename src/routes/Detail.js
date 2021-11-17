@@ -12,10 +12,26 @@ function Detail() {
     setMovie(detail.data.movie);
     setLoading(false);
   };
+  console.log(movie);
   useEffect(() => {
     getMovie();
   }, []);
-  return <div>{loading ? <h1>Loading</h1> : movie.id}</div>;
+  return (
+    <div>
+      {loading ? (
+        <h1>Loading</h1>
+      ) : (
+        <div>
+          <img src={movie.large_cover_image} />
+          <h1>
+            <a href={movie.url}>{movie.title_long}</a>
+          </h1>
+          <div>{movie.rating}</div>
+          <div>{movie.description_full}</div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Detail;
